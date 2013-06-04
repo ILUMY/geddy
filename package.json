@@ -13,7 +13,7 @@
   "dependencies": {
     "jake": "0.5.x",
     "utilities": "0.0.x",
-    "model": "0.1.x",
+    "model": "https://github.com/ILUMY/model/tarball/master,
     "barista": "0.0.x",
     "socket.io": "0.9.x"
   },
@@ -26,7 +26,7 @@
   "main": "./lib/geddy",
   "repository": {
     "type": "git",
-    "url": "git://github.com/mde/geddy.git"
+    "url": "git://github.com/ILUMY/geddy.git"
   },
   "preferGlobal": true,
   "devDependencies": {
