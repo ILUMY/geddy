@@ -13,7 +13,7 @@
   "dependencies": {
     "jake": "0.5.x",
     "utilities": "0.0.x",
-    "model": "https://github.com/ILUMY/model/tarball/master,
+    "model": "https://github.com/ILUMY/model/tarball/master",
     "barista": "0.0.x",
     "socket.io": "0.9.x"
   },
