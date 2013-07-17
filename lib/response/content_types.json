@@ -32,6 +32,7 @@
 , "gtar": "application/x-gtar"
 , "gz": "application/x-gzip"
 , "hdf": "application/x-hdf"
+, "hjson": "text/html"
 , "hqx": "application/mac-binhex40"
 , "html": "text/html"
 , "ice": "x-conference/x-cooltalk"
