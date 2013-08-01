@@ -8,14 +8,15 @@
     "MVC",
     "realtime"
   ],
-  "version": "0.8.7",
+  "version": "0.9.10",
   "author": "Matthew Eernisse <mde@fleegix.org> (http://fleegix.org)",
   "dependencies": {
     "jake": "0.5.x",
     "utilities": "0.0.x",
     "model": "https://github.com/ILUMY/model/tarball/master",
     "barista": "0.0.x",
-    "socket.io": "0.9.x"
+    "socket.io": "0.9.x",
+    "mime": "1.2.x"
   },
   "bin": {
     "geddy": "./bin/cli.js"
@@ -31,7 +32,12 @@
   "preferGlobal": true,
   "devDependencies": {
     "browserify": "1.16.x",
-    "socket.io-client": "0.9.x"
+    "socket.io-client": "0.9.x",
+    "handlebars": "latest",
+    "jade": "latest",
+    "swig": "latest",
+    "ejs": "latest",
+    "request": "latest"
   },
   "engines": {
     "node": "*"

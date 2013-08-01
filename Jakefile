@@ -2,6 +2,8 @@
 require('./lib/geddy')
 
 var fs = require('fs')
+  , path = require('path')
+  , utils = require('utilities')
   , createPackageTask
   , JSPAT = /\.js$/
   , testTask;
@@ -42,26 +44,37 @@ task('buildjs', function(){
 desc('Generate docs for Geddy');
 task('doc', ['doc:generate']);
 
-var p = new jake.NpmPublishTask('geddy', [
-  'Makefile'
-, 'Jakefile'
-, 'README.md'
-, 'package.json'
-, 'bin/**'
-, 'deps/**'
-, 'lib/**'
-, 'gen/**'
-, 'test/**'
-]);
+var p = new jake.NpmPublishTask('geddy', function () {
+  this.packageFiles.include([
+    'Makefile'
+  , 'Jakefile'
+  , 'README.md'
+  , 'package.json'
+  , 'usage.txt'
+  , 'bin/**'
+  , 'deps/**'
+  , 'lib/**'
+  , 'gen/**'
+  , 'test/**'
+  ]);
+  this.packageFiles.exclude([
+    'test/tmp'
+  ]);
+});
 
 testTask = new jake.TestTask('Geddy', function () {
   this.testName = 'testBase';
+  // FIXME: The partial test fails when run too early. This "fix" sucks.
+  this.testFiles.exclude('test/templates/partial.js');
   this.testFiles.include('test/**/*.js');
+  this.testFiles.include('test/templates/partial.js');
+  this.testFiles.exclude('test/controllers/shim.js');
+  this.testFiles.exclude('test/controllers/responder.js');
   this.showDescription = false;
 });
 
 desc('Run the Geddy tests');
-task('test', function () {
+task('test', ['clean'], function () {
   var t = jake.Task.testBase;
   t.addListener('error', function (err) {
     var module
@@ -89,3 +102,9 @@ task('test', function () {
   t.invoke.apply(t, arguments);
 }, {async: true});
 
+desc('Clears the test temp dir');
+task('clean', function () {
+  tmpDir = path.join(__dirname, 'test', 'tmp');
+  utils.file.rmRf(tmpDir, {silent:true});
+  fs.mkdirSync(tmpDir);
+});

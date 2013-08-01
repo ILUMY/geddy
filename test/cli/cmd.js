@@ -1,5 +1,5 @@
 var assert = require('assert')
-  , cmd = require('../lib/cmd')
+  , cmd = require('../../lib/cmd')
   , Cmd = cmd.Cmd
   , tests;
 
@@ -20,7 +20,6 @@ tests = {
     assert.equal('gen:scaffold[zooby,foo:int%bar:string,default,realtime]',
         c.jakeTaskName);
   }
-
 };
 
 module.exports = tests;
